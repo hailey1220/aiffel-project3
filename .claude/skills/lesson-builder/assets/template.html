@@ -318,7 +318,8 @@ const SHORT = {{SHORT}};</script>
 "use strict";
 const MOTION = window.matchMedia && matchMedia("(prefers-reduced-motion: no-preference)").matches;
 const slides = [...document.querySelectorAll(".slide")];
-const groupOf = s => { const m = s.id.match(/^part\d+/); return m ? m[0] : (s.id === "end" ? "part7" : "intro"); };
+const LAST_PART = (slides.filter(x => /^part\d+$/.test(x.id)).pop() || {id:"intro"}).id;
+const groupOf = s => { const m = s.id.match(/^part\d+/); return m ? m[0] : (s.id === "end" ? LAST_PART : "intro"); };
 const groups = [];
 slides.forEach((s, i) => { const g = groupOf(s); let G = groups.find(x => x.key === g); if (!G){ G = {key:g, first:i, n:0}; groups.push(G); } G.n++; });
 let idx = -1, returnTo = null;
