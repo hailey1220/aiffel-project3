@@ -90,3 +90,5 @@ cp -r aiffel-project3/.claude/skills/lesson-builder ~/.claude/skills/
 ## 업데이트 기록
 - 2026-11 과제 대상을 블로그 글 정리(lecture-to-blog)에서 교안 만들기(lesson-builder)로 변경
 - 2026-11 첫 버전
+
+-    - 2026-11 파트 수가 7개가 아니면 학습 흐름에 빈 칸이 생기던 문제 수정
