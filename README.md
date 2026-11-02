@@ -59,16 +59,39 @@ cp -r aiffel-project3/.claude/skills/lesson-builder "aiffel lesson_claude/.claud
 mkdir -p ~/.claude/skills
 cp -r aiffel-project3/.claude/skills/lesson-builder ~/.claude/skills/
 ```
-
 ## 발동 테스트 기록
 
-적용 대상 프로젝트 `aiffel lesson_claude` 에서 새 대화를 열고 확인했습니다.
+적용 대상 프로젝트 `aiffel lesson_claude` 에서 `/clear` 로 새 대화를 열고 확인했습니다.
 
 | 날짜 | 입력한 문장 | 결과 |
 |---|---|---|
-| 2026-11-__ | 이 강의 원고로 교안 만들어줘 | (스킬 발동 여부, 만들어진 파일) |
+| 2026-11-02 | (강의 원고 붙여 넣기) 이 강의 원고로 교안 만들어줘 | `Skill(lesson-builder)` 발동. 원고에서 과정명·모듈명을 읽어 질문 없이 진행하고, lesson.json 작성 후 교안 HTML 생성 |
 
-![발동 화면](docs/test.png)
+스킬이 SKILL.md의 규칙대로 동작한 점
+- 원고가 중간에서 끝난 것을 알리고, 이어질 원고를 요청함
+- 원고에 없던 설명을 넣은 부분을 밝히고 뺄지 물음
+- 빨리 바뀌는 정보(GitHub 별 수, 2026년 도구 표현)를 “수업 전 확인”으로 표시함
+
+테스트 중 발견해서 고친 점
+- 파트가 4개인 교안에서 학습 흐름에 이름 없는 칸(05)이 생김 → 마지막 화면을 실제 마지막 파트에 붙이도록 템플릿 수정
+- 테스트 PC에 Python이 없어 빌드 스크립트를 Node로 옮겨 실행함 → 다음에는 Python을 설치해 스킬의 스크립트를 그대로 쓸 예정
+
+
+
+
+**① 발동 화면** · 새 대화에서 “이 강의 원고로 교안 만들어줘”를 입력하자 `Skill(lesson-builder)`가 불러와진 장면
+
+![발동 화면](test.png)
+
+
+
+
+
+
+**② 만들어진 교안** · 스킬이 만든 교안을 브라우저로 연 화면 (왼쪽 학습 흐름, 본문, 확인 문제)
+
+![만들어진 교안](lesson.png)
+
 
 ## 구조
 
